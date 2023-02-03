@@ -16,6 +16,16 @@ class MainWindow(QMainWindow):
         self.map_ll = [37.620431, 55.753789]
         self.render_map()
 
+    def keyPressEvent(self, event):
+        key = event.key()
+        if key == Qt.Key_PageUp and self.zoom < 17:
+            self.zoom += 1
+        if key == Qt.Key_PageDown and 0 < self.zoom:
+            self.zoom -= 1
+
+
+        self.render_map()
+
     def render_map(self):
         params = {
             "ll": f'{self.map_ll[0]},{self.map_ll[1]}',
