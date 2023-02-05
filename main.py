@@ -10,7 +10,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('untitled.ui', self)
-        self.zoom = 18
+        self.zoom = 10
         delta = 0.2
         self.map_l = 'map'
         self.map_ll = [37.620431, 55.753789]
@@ -22,6 +22,16 @@ class MainWindow(QMainWindow):
             self.zoom += 1
         if key == Qt.Key_PageDown and 0 < self.zoom:
             self.zoom -= 1
+        if key == Qt.Key_Down:
+            self.map_ll[1] -= 0.035 * self.zoom * 2
+        if key == Qt.Key_Up:
+            self.map_ll[1] += 0.035 * self.zoom * 2
+        if key == Qt.Key_Left:
+            self.map_ll[0] -= 0.035 * self.zoom * 4
+        if key == Qt.Key_Right:
+            self.map_ll[0] += 0.035 * self.zoom * 4
+
+
 
 
         self.render_map()
