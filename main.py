@@ -23,14 +23,19 @@ class MainWindow(QMainWindow):
         if key == Qt.Key_PageDown and 0 < self.zoom:
             self.zoom -= 1
         if key == Qt.Key_Down:
-            self.map_ll[1] -= 0.035 * self.zoom * 2
+            self.map_ll[1] -= 0.035 * (20 - self.zoom)
         if key == Qt.Key_Up:
-            self.map_ll[1] += 0.035 * self.zoom * 2
+            self.map_ll[1] += 0.035 * (20 - self.zoom)
         if key == Qt.Key_Left:
-            self.map_ll[0] -= 0.035 * self.zoom * 4
+            self.map_ll[0] -= 0.035 * (20 - self.zoom)
         if key == Qt.Key_Right:
-            self.map_ll[0] += 0.035 * self.zoom * 4
-
+            self.map_ll[0] += 0.035 * (20 - self.zoom)
+        if key == Qt.Key_G:
+            self.map_l = 'sat,skl'
+        if key == Qt.Key_S:
+            self.map_l = 'sat'
+        if key == Qt.Key_M:
+            self.map_l = 'map'
 
 
 
